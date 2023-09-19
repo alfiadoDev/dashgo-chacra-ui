@@ -5,11 +5,11 @@ import { FieldError } from "react-hook-form";
 interface InputProps extends ChakraInputProps {
   name: string
   label: string
-  error: FieldError | undefined
+  error?: FieldError | undefined
 }
 
 const InputBase: ForwardRefRenderFunction<HTMLInputElement, InputProps>
-  = ({ name, label, error, ...rest }, ref) => {
+  = ({ name, label, error = undefined, ...rest }, ref) => {
     return (
       <FormControl isInvalid={!!error}>
         {!!label && <FormLabel htmlFor="email">{label}</FormLabel>}
