@@ -4,12 +4,19 @@ import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../components/Header";
 import { Pagination } from "../../components/Pagination";
 import { Sidebar } from "../../components/Sidebar";
+import { useEffect } from "react";
 
 export default function UserList() {
   const isWideVersion = useBreakpointValue({
     base: false,
     lg: true,
   });
+
+  useEffect(() => {
+    fetch('http://localhost:3000/api/users')
+      .then(response => response.json())
+      .then(data => console.log(data))
+  }, [])
 
   return (
     <Box>
@@ -22,7 +29,7 @@ export default function UserList() {
           <Flex mb="8" justify="space-between" align="center">
             <Heading size="lg" fontWeight="normal">Usuarios</Heading>
 
-            <Link href="/users/create" passHref>
+            {/* <Link href="/users/create" passHref>
               <Button
                 as="a"
                 size="sm"
@@ -32,7 +39,18 @@ export default function UserList() {
               >
                 Criar novo
               </Button>
-            </Link>
+            </Link> */}
+            <Button
+              as={Link}
+              href="/users/create"
+              passHref
+              size="sm"
+              fontSize="sm"
+              colorScheme="pink"
+              leftIcon={<Icon as={RiAddLine} fontSize="20" />}
+            >
+              Criar novo
+            </Button>
           </Flex>
 
           <Table colorScheme="whiteAlpha">

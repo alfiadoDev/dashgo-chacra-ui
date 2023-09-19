@@ -31,6 +31,7 @@
     "yup": "^1.2.0"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
     "miragejs": "^0.1.47",
