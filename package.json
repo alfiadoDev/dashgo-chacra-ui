@@ -33,6 +33,7 @@
   "devDependencies": {
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1",
+    "miragejs": "^0.1.47",
     "prettier": "^2.7.1"
   }
 }
