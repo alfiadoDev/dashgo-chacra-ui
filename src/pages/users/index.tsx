@@ -10,13 +10,6 @@ import { api } from "../../services/api";
 import { useUsers } from "../../services/hooks/useUsers";
 
 
-type User = {
-  id: string
-  name: string
-  email: string
-  created_at: string
-}
-
 export default function UserList() {
   const { data, isLoading, isFetching, error } = useUsers()
 
@@ -121,7 +114,11 @@ export default function UserList() {
             </>
           )}
 
-          <Pagination />
+          <Pagination
+            totalCountOfRegisters={200}
+            currentPage={5}
+            onPageChange={() => { }}
+          />
         </Box>
       </Flex>
     </Box>
