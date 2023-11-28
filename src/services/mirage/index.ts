@@ -52,6 +52,8 @@ export function makeServer() {
           { users }
         )
       })
+
+      this.get('/users/:id')
       this.post('/users')
 
       this.namespace = ''; // resetar o namespace para nao atrapalhar com as routas de api do nextjs
