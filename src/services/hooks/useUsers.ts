@@ -1,4 +1,4 @@
-import { useQuery } from "react-query"
+import { UseQueryOptions, useQuery } from "react-query"
 import { api } from "../api"
 
 type User = {
@@ -41,8 +41,9 @@ export async function getUsers(page: number): Promise<GetUserResponse> {
   }
 }
 
-export function useUsers(page: number) {
+export function useUsers(page: number, options: UseQueryOptions) {
   return useQuery(['users', page], () => getUsers(page), {
     staleTime: 1000 * 5, //quero dizer que esta query nos primeiros 5s ela sera fresh nao sera recarregada
+    ...options
   })
 }
