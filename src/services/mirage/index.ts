@@ -1,4 +1,4 @@
-import { Factory, Model, Response, createServer } from 'miragejs'
+import { ActiveModelSerializer, Factory, Model, Response, createServer } from 'miragejs'
 import { faker } from '@faker-js/faker'
 
 type User = {
@@ -9,6 +9,10 @@ type User = {
 
 export function makeServer() {
   const server = createServer({
+    serializers: {
+      application: ActiveModelSerializer,
+    },
+
     models: {
       user: Model.extend<Partial<User>>({})
     },
@@ -44,7 +48,9 @@ export function makeServer() {
 
         const pageEnd = pageStart + Number(per_page)
 
-        const users = this.serialize(schema.all('user')).users.slice(pageStart, pageEnd)
+        const users = this.serialize(schema.all('user'))
+          .users
+          .slice(pageStart, pageEnd)
 
         return new Response(
           200,
